@@ -17,7 +17,7 @@ class TicketInitialState extends TicketState {
   List<Object> get props => [];
 }
 
-class ArticleLoadingState extends TicketState {
+class TicketLoadingState extends TicketState {
   @override
   // TODO: implement props
   List<Object> get props => [];
@@ -55,7 +55,7 @@ class TicketBloc extends Bloc<TicketEvent, TicketState> {
   @override
   Stream<TicketState> mapEventToState(TicketEvent event) async* {
     if (event is FetchTicketEvent) {
-      yield ArticleLoadingState();
+      yield TicketLoadingState();
       try {
         List<TotalTicketDataModel> ticket = await repository.getTicket();
         yield TicketLoadedState(tickets: ticket);
